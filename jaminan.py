@@ -7,8 +7,8 @@ from google.oauth2.service_account import Credentials
 
 # --- KONFIGURASI GOOGLE SHEETS BARU (Untuk SJP) ---
 # PASTIKAN SPREADSHEET INI SUDAH ADA DI DRIVE ANDA DAN DIBAGIKAN KE SERVICE ACCOUNT
-SPREADSHEET_NAME_SJP = "Surat Jaminan Perusahaan"
-WORKSHEET_NAME_SJP = "DATA JAMINAN" # Sesuaikan dengan nama sheet/tab di Google Sheet Anda
+SPREADSHEET_NAME_SJP = "PermintaanMobil dan Surat Jaminan Perusaaan"
+WORKSHEET_NAME_SJP = "JAMINAN PERUSAHAAN" # Sesuaikan dengan nama sheet/tab di Google Sheet Anda
 
 # --- KONEKSI GOOGLE SHEETS (Reuse code) ---
 @st.cache_resource(ttl=3600)
@@ -41,8 +41,8 @@ def get_worksheet_sjp() -> Worksheet:
     """Mendapatkan objek worksheet SJP."""
     try:
         gc = get_gspread_client()
-        sh = gc.open(PermintaanMobil dan Surat Jaminan Perusahaan)
-        return sh.worksheet(JAMINAN PERUSAHAAN)
+        sh = gc.open(SPREADSHEET_NAME_SJP)
+        return sh.worksheet(WORKSHEET_NAME_SJP)
     except gspread.exceptions.SpreadsheetNotFound:
         st.error(f"Error: Spreadsheet '{SPREADSHEET_NAME_SJP}' tidak ditemukan. Pastikan nama file dan izin Service Account benar.")
         st.stop()
@@ -140,5 +140,4 @@ if submit_button:
             st.dataframe(pd.DataFrame([data_sjp], columns=columns_sjp))
 
         except Exception as e:
-
             st.error(f"Terjadi kesalahan saat menyimpan data SJP ke Google Sheets. Error: {e}")

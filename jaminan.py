@@ -7,8 +7,8 @@ from google.oauth2.service_account import Credentials
 
 # --- KONFIGURASI GOOGLE SHEETS BARU (Untuk SJP) ---
 # PASTIKAN SPREADSHEET INI SUDAH ADA DI DRIVE ANDA DAN DIBAGIKAN KE SERVICE ACCOUNT
-SPREADSHEET_NAME_SJP = "PermintaanMobil dan Surat Jaminan Perusahaan"
-WORKSHEET_NAME_SJP = "JAMINAN PERUSAHAAN" # Sesuaikan dengan nama sheet/tab di Google Sheet Anda
+SPREADSHEET_NAME_SJP = "PermintaanMobil dan Surat Jaminan perawatan"
+WORKSHEET_NAME_SJP = "JAMINAN PERAWATAN" # Sesuaikan dengan nama sheet/tab di Google Sheet Anda
 
 # --- KONEKSI GOOGLE SHEETS (Reuse code) ---
 @st.cache_resource(ttl=3600)
@@ -62,7 +62,7 @@ STATUS_CHOICES = [
     "Karyawan", "Istri", "Anak ke-1", "Anak ke-2", "Anak ke-3"
 ]
 
-st.set_page_config(page_title="Surat Jaminan Perusahaan", layout="centered")
+st.set_page_config(page_title="Surat Jaminan perawatan", layout="centered")
 
 st.title("📄 Surat Jaminan Perusahaan ")
 st.caption("Formulir ini digunakan untuk mencatat dan mengajukan data klaim jaminan.")
@@ -130,6 +130,7 @@ if submit_button:
 
         except Exception as e:
             st.error(f"Terjadi kesalahan saat menyimpan data SJP ke Google Sheets. Error: {e}")
+
 
 
 

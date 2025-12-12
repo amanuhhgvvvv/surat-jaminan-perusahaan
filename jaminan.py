@@ -7,7 +7,7 @@ from google.oauth2.service_account import Credentials
 
 # --- KONFIGURASI GOOGLE SHEETS BARU (Untuk SJP) ---
 # PASTIKAN SPREADSHEET INI SUDAH ADA DI DRIVE ANDA DAN DIBAGIKAN KE SERVICE ACCOUNT
-SPREADSHEET_NAME_SJP = "PermintaanMobil dan Surat Jaminan perawatan"
+SPREADSHEET_NAME_SJP = "PermintaanMobil dan Surat Jaminan Perawatan"
 WORKSHEET_NAME_SJP = "JAMINAN PERAWATAN" # Sesuaikan dengan nama sheet/tab di Google Sheet Anda
 
 # --- KONEKSI GOOGLE SHEETS (Reuse code) ---
@@ -130,6 +130,7 @@ if submit_button:
 
         except Exception as e:
             st.error(f"Terjadi kesalahan saat menyimpan data SJP ke Google Sheets. Error: {e}")
+
 
 
 

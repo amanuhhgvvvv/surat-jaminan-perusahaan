@@ -64,7 +64,7 @@ STATUS_CHOICES = [
 
 st.set_page_config(page_title="Surat Jaminan perawatan", layout="centered")
 
-st.title("📄 Surat Jaminan Perusahaan ")
+st.title("📄 Surat Jaminan Perawatan ")
 st.caption("Formulir ini digunakan untuk mencatat dan mengajukan data klaim jaminan.")
 
 # Menggunakan st.form untuk menangani input dalam satu transaksi
@@ -130,6 +130,7 @@ if submit_button:
 
         except Exception as e:
             st.error(f"Terjadi kesalahan saat menyimpan data SJP ke Google Sheets. Error: {e}")
+
 
 
 

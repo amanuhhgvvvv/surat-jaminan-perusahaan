@@ -123,8 +123,13 @@ if submit_button:
                 tanggal_masuk.strftime('%d-%m-%Y'),
                 tanggal_keluar.strftime('%d-%m-%Y'),
             ]
+try:
+    ws_sjp.append_row(data_sjp)
 
-            ws_sjp.append_row(data_sjp)
-            
-            st.success("✅ Data Surat Jaminan Perusahaan Berhasil Disimpan!")
-            st.balloons()
+    st.success("✅ Data Surat Jaminan Perusahaan Berhasil Disimpan!")
+    st.balloons()
+
+except Exception as e:
+    st.error(f"Terjadi kesalahan saat menyimpan data SJP ke Google Sheets. Error: {e}")
+
+

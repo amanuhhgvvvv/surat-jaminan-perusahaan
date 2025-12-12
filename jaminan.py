@@ -128,7 +128,3 @@ if submit_button:
             
             st.success("✅ Data Surat Jaminan Perusahaan Berhasil Disimpan!")
             st.balloons()
-            
-         
-
-

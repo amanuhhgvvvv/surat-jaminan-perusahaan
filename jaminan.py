@@ -131,11 +131,12 @@ if submit_button:
             
             st.subheader("Ringkasan Data SJP:")
             columns_sjp = [
-                "Waktu_Pengajuan", "Nama", "NIK", "Departemen", 
+                "Nama", "NIK", "Departemen", 
                 "Status", "Diagnosa", "Tgl_Masuk_RS", "Tgl_Keluar_RS"
             ] 
             st.dataframe(pd.DataFrame([data_sjp], columns=columns_sjp))
 
         except Exception as e:
             st.error(f"Terjadi kesalahan saat menyimpan data SJP ke Google Sheets. Error: {e}")
+
 

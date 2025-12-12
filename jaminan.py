@@ -29,7 +29,10 @@ def get_gspread_client():
         }
         credentials = Credentials.from_service_account_info(
             creds_info,
-            scopes=["https://www.googleapis.com/auth/spreadsheets"]
+            scopes=[
+                "https://www.googleapis.com/auth/spreadsheets",
+                "https://www.googleapis.com/auth/drive"
+            ]
         )
         return gspread.authorize(credentials)
     except Exception as e:
@@ -85,13 +88,12 @@ with st.form(key='sjp_form'):
         tanggal_masuk = st.date_input(
             "Tanggal Masuk RS:", 
             datetime.date.today(),
-            # Memungkinkan tanggal di masa lalu
         )
         
     with col2:
         tanggal_keluar = st.date_input(
             "Tanggal Keluar RS (Estimasi):", 
-            datetime.date.today() + datetime.timedelta(days=1), # Default 1 hari setelah masuk
+            datetime.date.today() + datetime.timedelta(days=1),
         )
         
     # Validasi Tambahan
@@ -112,9 +114,8 @@ if submit_button:
         try:
             # --- LOGIKA PENYIMPANAN DATA KE GOOGLE SHEETS ---
             
-            # 1. Persiapan Data (Pastikan urutan sesuai dengan kolom di Google Sheet SJP Anda!)
             data_sjp = [
-                datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'), # Waktu Pengajuan
+                datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
                 nama,
                 nik,
                 departemen,
@@ -124,14 +125,11 @@ if submit_button:
                 tanggal_keluar.strftime('%Y-%m-%d'),
             ]
 
-            # 2. Penyimpanan Data ke Google Sheets
             ws_sjp.append_row(data_sjp)
             
-            # 3. Pesan Sukses
             st.success("✅ Data Surat Jaminan Perusahaan Berhasil Disimpan!")
             st.balloons()
             
-            # 4. Output Ringkasan
             st.subheader("Ringkasan Data SJP:")
             columns_sjp = [
                 "Waktu_Pengajuan", "Nama", "NIK", "Departemen", 
@@ -141,4 +139,3 @@ if submit_button:
 
         except Exception as e:
             st.error(f"Terjadi kesalahan saat menyimpan data SJP ke Google Sheets. Error: {e}")
-

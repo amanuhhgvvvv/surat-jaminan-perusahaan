@@ -128,3 +128,13 @@ if submit_button:
             
             st.success("✅ Data Surat Jaminan Perusahaan Berhasil Disimpan!")
             st.balloons()
+            
+            st.subheader("Ringkasan Data SJP:")
+            columns_sjp = [
+                "Nama", "NIK", "Departemen", 
+                "Status", "Diagnosa", "Tgl_Masuk_RS", "Tgl_Keluar_RS"
+            ] 
+            st.dataframe(pd.DataFrame([data_sjp], columns=columns_sjp))
+
+        except Exception as e:
+            st.error(f"Terjadi kesalahan saat menyimpan data SJP ke Google Sheets. Error: {e}")

@@ -64,7 +64,7 @@ STATUS_CHOICES = [
 
 st.set_page_config(page_title="Surat Jaminan Perusahaan", layout="centered")
 
-st.title("📄 Surat Jaminan Perusahaan (SJP)")
+st.title("📄 Surat Jaminan Perusahaan ")
 st.caption("Formulir ini digunakan untuk mencatat dan mengajukan data klaim jaminan.")
 
 # Menggunakan st.form untuk menangani input dalam satu transaksi
@@ -92,7 +92,7 @@ with st.form(key='sjp_form'):
         
     with col2:
         tanggal_keluar = st.date_input(
-            "Tanggal Keluar RS (Estimasi):", 
+            "Tanggal Keluar RS :", 
             datetime.date.today() + datetime.timedelta(days=1),
         )
         
@@ -139,3 +139,4 @@ if submit_button:
         except Exception as e:
             st.error(f"Terjadi kesalahan saat menyimpan data SJP ke Google Sheets. Error: {e}")
             st.balons()
+

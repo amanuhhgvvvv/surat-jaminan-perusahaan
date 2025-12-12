@@ -64,7 +64,7 @@ STATUS_CHOICES = [
 
 st.set_page_config(page_title="Surat Jaminan Perusahaan", layout="centered")
 
-st.title("📄 Pengajuan Surat Jaminan Perusahaan (SJP)")
+st.title("📄 Surat Jaminan Perusahaan (SJP)")
 st.caption("Formulir ini digunakan untuk mencatat dan mengajukan data klaim jaminan.")
 
 # Menggunakan st.form untuk menangani input dalam satu transaksi
@@ -115,14 +115,13 @@ if submit_button:
             # --- LOGIKA PENYIMPANAN DATA KE GOOGLE SHEETS ---
             
             data_sjp = [
-                datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
                 nama,
                 nik,
                 departemen,
                 status,
                 diagnosa,
-                tanggal_masuk.strftime('%Y-%m-%d'),
-                tanggal_keluar.strftime('%Y-%m-%d'),
+                tanggal_masuk.strftime('%d-%m-%Y'),
+                tanggal_keluar.strftime('%d-%m-%Y'),
             ]
 
             ws_sjp.append_row(data_sjp)
@@ -139,3 +138,4 @@ if submit_button:
 
         except Exception as e:
             st.error(f"Terjadi kesalahan saat menyimpan data SJP ke Google Sheets. Error: {e}")
+

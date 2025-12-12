@@ -125,11 +125,12 @@ if submit_button:
 
             ws_sjp.append_row(data_sjp)
 
-            st.success("✅ Data Surat Jaminan Perusahaan Berhasil Disimpan!")
+            st.success("✅ Data Surat Jaminan Perawatan Berhasil Disimpan!")
             st.balloons()
 
         except Exception as e:
             st.error(f"Terjadi kesalahan saat menyimpan data SJP ke Google Sheets. Error: {e}")
+
 
 
 
